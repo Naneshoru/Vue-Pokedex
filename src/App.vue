@@ -19,11 +19,17 @@ export default {
   methods: {
     async getPokemons() {
       axios.get('https://pokeapi.co/api/v2/pokemon').then(res => {
-        console.log(res)
         const { data } = res;
-        console.log(data)
         this.pokemons = data.results;
+
+        this.setPokeNumbers();
       })
+    },
+
+    setPokeNumbers() {
+      this.pokemons.forEach((pokemon) => {
+        pokemon.id = pokemon.url.split('/')[6];
+      });
     }
   },
   mounted() {
