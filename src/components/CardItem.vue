@@ -4,7 +4,7 @@
       <img :src="item.path" :alt="item.name">
     </div>
     <div class="card__title">
-      <p>{{ item.id }}# : {{ item.name }}</p>
+      <p>{{ item.id }}# {{ item.name }}</p>
     </div>
   </div>
 </template>
@@ -29,6 +29,7 @@ export default {
   }
 
   .card__title {
-    
+    text-transform: capitalize;
+    font-weight: bold;
   }
 </style>
