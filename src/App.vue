@@ -1,43 +1,35 @@
 <template>
-  <ListComponent :pokemons="pokemons" />
+  <div class="app__container">
+    <div class="app__header">
+      Header
+    </div>
+
+    <div class="app__body">
+      <router-view />
+    </div>
+
+    <div class="app__footer">
+      Footer
+    </div>
+  </div>
 </template>
 
 <script>
-import ListComponent from './components/ListComponent.vue'
-import axios from 'axios';
-
 export default {
-  name: 'PokedexApp',
-  components: {
-    ListComponent
-  },
-  data() {
-    return {
-      pokemons: []
-    }
-  },
-  methods: {
-    async getPokemons() {
-      axios.get('https://pokeapi.co/api/v2/pokemon').then(res => {
-        const { data } = res;
-        this.pokemons = data.results;
-
-        this.setPokeNumbers();
-      })
-    },
-
-    setPokeNumbers() {
-      this.pokemons.forEach((pokemon) => {
-        pokemon.id = pokemon.url.split('/')[6];
-      });
-    }
-  },
-  mounted() {
-    this.getPokemons();
-  }
+  name: 'PokedexApp'
 }
 </script>
 
 <style>
-  
+   .app__header {
+    
+  }
+
+  .app__body {
+    
+  }
+
+  .app__footer {
+
+  }
 </style>
