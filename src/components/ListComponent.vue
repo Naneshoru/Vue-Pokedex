@@ -1,14 +1,16 @@
 <template>
-  <div class="list__header">
-    List Header
-  </div>
+  <div class="list-container">
+    <div class="list__header">
+      List Header
+    </div>
 
-  <div class="list__body" v-for="pokemon in pokemons" :key="pokemon.id">
-    <CardItem :pokemon="pokemon"/>
-  </div>
+    <div class="list__body">
+      <CardItem :pokemon="pokemon" v-for="pokemon in pokemons" :key="pokemon.id"/>
+    </div>
 
-  <div class="list__footer">
-    List Footer
+    <div class="list__footer">
+      List Footer
+    </div>
   </div>
 </template>
 
@@ -27,5 +29,21 @@ export default {
 </script>
 
 <style scoped>
-  
+  .list-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .list__header {
+    
+  }
+
+  .list__body {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .list__footer {
+
+  }
 </style>
