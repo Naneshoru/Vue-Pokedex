@@ -1,10 +1,10 @@
 <template>
   <div class="card__container">
     <div class="card__img">
-      <img :src="pokemon.path" :alt="pokemon.name">
+      <img :src="item.path" :alt="item.name">
     </div>
     <div class="card__title">
-      <p>{{ pokemon.id }}# : {{ pokemon.name }}</p>
+      <p>{{ item.id }}# : {{ item.name }}</p>
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@
 export default {
   name: 'CardItem',
   props: {
-    pokemon: Object
+    item: Object
   }
 }
 </script>
