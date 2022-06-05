@@ -1,26 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <ListComponent :pokemons="pokemons" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ListComponent from './components/ListComponent.vue'
+import axios from 'axios';
 
 export default {
-  name: 'App',
+  name: 'PokedexApp',
   components: {
-    HelloWorld
+    ListComponent
+  },
+  data() {
+    return {
+      pokemons: []
+    }
+  },
+  methods: {
+    async getPokemons() {
+      axios.get('https://pokeapi.co/api/v2/pokemon').then(res => {
+        console.log(res)
+        const { data } = res;
+        console.log(data)
+        this.pokemons = data.results;
+      })
+    }
+  },
+  mounted() {
+    this.getPokemons();
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  
 </style>
